@@ -154,7 +154,7 @@ module.exports = function (context) {
 			preferencesStringDocument = settingsDocuments.preferencesStringDocument;
 
 
-		return fs.exists('platforms/android')
+		return afterPluginInstall().then(fs.exists('platforms/android'))
 			// Write preferences xml file
 			.then(function () { return fs.mkdir('platforms/android/res/xml'); })
 			.then(function () { return fs.writeFile('platforms/android/res/xml/apppreferences.xml', preferencesDocument.write()); })
